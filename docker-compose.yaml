@@ -42,9 +42,9 @@ services:
       - "3002:3002"
     networks:
       - phoubon-network
-    volumes:
-      - ./backend:/app
-      - /app/node_modules
+#    volumes:
+#      - ./backend:/app
+#      - /app/node_modules
     command: npm run dev
 
   frontend:
@@ -60,9 +60,9 @@ services:
       - "5174:5173"
     networks:
       - phoubon-network
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
+#    volumes:
+#      - ./frontend:/app
+#      - /app/node_modules
     command: npm run dev
 
 volumes:
