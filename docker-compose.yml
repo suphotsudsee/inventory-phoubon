@@ -1,0 +1,73 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: phoubon-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: phoubon_root_pass
+      MYSQL_DATABASE: inventory_phoubon
+      MYSQL_USER: phoubon_app
+      MYSQL_PASSWORD: phoubon_app_pass
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./backend/database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+      - ./backend/database/init-users.sql:/docker-entrypoint-initdb.d/02-init-users.sql
+    ports:
+      - "3308:3306"
+    networks:
+      - phoubon-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: phoubon-backend
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USER: phoubon_app
+      DB_PASSWORD: phoubon_app_pass
+      DB_NAME: inventory_phoubon
+      PORT: 3002
+      NODE_ENV: production
+      JWT_SECRET: phoubon_jwt_secret_2026_change_in_production
+    depends_on:
+      mysql:
+        condition: service_healthy
+    ports:
+      - "3002:3002"
+    networks:
+      - phoubon-network
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    command: npm run dev
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: phoubon-frontend
+    environment:
+      VITE_API_PROXY_TARGET: http://backend:3002
+    depends_on:
+      - backend
+    ports:
+      - "5174:5173"
+    networks:
+      - phoubon-network
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    command: npm run dev
+
+volumes:
+  mysql_data:
+    driver: local
+
+networks:
+  phoubon-network:
+    driver: bridge
