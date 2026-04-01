@@ -1,6 +1,8 @@
 services:
   mysql:
-    image: mysql:8.0
+    build:
+      context: ./backend/database
+      dockerfile: Dockerfile
     container_name: phoubon-mysql
     environment:
       MYSQL_ROOT_PASSWORD: phoubon_root_pass
