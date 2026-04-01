@@ -8,6 +8,7 @@ export default defineConfig(function (_a) {
         plugins: [react(), tailwindcss()],
         server: {
             host: '0.0.0.0',
+            allowedHosts: true,  // ← เพิ่มบรรทัดนี้
             proxy: {
                 '/api': {
                     target: env.VITE_API_PROXY_TARGET || 'http://localhost:3002',
