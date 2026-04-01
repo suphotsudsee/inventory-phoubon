@@ -12,8 +12,8 @@ const lotBalanceJoin = `
   ) lb ON lb.product_id = p.id
 `;
 
-// Expression to get current stock from lot balance
-const currentStockExpr = 'COALESCE(lb.quantity, 0)';
+// Use lot balance when available, otherwise fall back to stock_levels quantity.
+const currentStockExpr = 'GREATEST(COALESCE(lb.quantity, 0), COALESCE(sl.quantity, 0))';
 
 // SQL JOIN for stock levels
 const stockLevelJoin = `
