@@ -29,7 +29,7 @@ export const LoginPage: React.FC = () => {
       <div className="w-full max-w-md rounded-2xl border border-slate-200 bg-white p-8 shadow-xl">
         <div className="mb-6">
           <div className="text-sm font-medium uppercase tracking-[0.2em] text-sky-700">
-            ระบบคลังยา ภูพาน
+            ระบบคลังยา
           </div>
           <h1 className="mt-2 text-2xl font-bold text-slate-900">เข้าสู่ระบบ</h1>
           <p className="mt-2 text-sm text-slate-500">

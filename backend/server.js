@@ -1,6 +1,6 @@
 /**
  * Inventory Phoubon - Backend Server
- * ระบบบริหารจัดการคลังเวชภัณฑ์ ภูพาน
+ * ระบบบริหารจัดการคลังเวชภัณฑ์
  */
 
 const express = require('express');
@@ -57,7 +57,7 @@ app.use('/api/users', isAuthenticated, usersRouter);
 // API info
 app.get('/api', (req, res) => {
   res.json({
-    name: 'ระบบบริหารจัดการคลังเวชภัณฑ์ ภูพาน',
+    name: 'ระบบบริหารจัดการคลังเวชภัณฑ์',
     version: '1.0.0',
     description: 'Inventory & Procurement Management System for Phoubon Hospital',
     endpoints: {

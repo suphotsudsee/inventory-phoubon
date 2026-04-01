@@ -165,7 +165,7 @@ export const SettingsPage: React.FC = () => {
         <div className="grid grid-cols-2 gap-4 text-sm">
           <div className="bg-gray-50 rounded-lg p-3">
             <div className="text-gray-500">ชื่อระบบ</div>
-            <div className="font-medium">ระบบบริหารจัดการคลังเวชภัณฑ์ ภูพาน</div>
+            <div className="font-medium">ระบบบริหารจัดการคลังเวชภัณฑ์</div>
           </div>
           <div className="bg-gray-50 rounded-lg p-3">
             <div className="text-gray-500">เวอร์ชัน</div>
