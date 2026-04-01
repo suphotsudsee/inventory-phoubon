@@ -33,7 +33,7 @@ export const LoginPage: React.FC = () => {
           </div>
           <h1 className="mt-2 text-2xl font-bold text-slate-900">เข้าสู่ระบบ</h1>
           <p className="mt-2 text-sm text-slate-500">
-            ระบบบริหารจัดการคลังเวชภัณฑ์ โรงพยาบาลภูพาน
+            ระบบบริหารจัดการคลังเวชภัณฑ์ สำหรับโรงพยาบาลใน จ.อุบลราชธานี
           </p>
         </div>
 

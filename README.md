@@ -1,7 +1,7 @@
 # 📦 ระบบบริหารจัดการคลังเวชภัณฑ์ ภูพาน
 # Inventory Phoubon Management System
 
-> ระบบจัดการคลังสินค้าและการจัดซื้อจัดจ้างสำหรับโรงพยาบาลภูพาน
+> ระบบจัดการคลังสินค้าและการจัดซื้อจัดจ้างสำหรับโรงพยาบาล
 
 [![Node.js](https://img.shields.io/badge/Node.js-18%2B-green.svg)](https://nodejs.org/)
 [![React](https://img.shields.io/badge/React-19-blue.svg)](https://reactjs.org/)
@@ -295,7 +295,7 @@ MIT License
 
 ## 👨‍💻 Development Team
 
-พัฒนาโดยทีมพัฒนาโรงพยาบาลภูพาน
+พัฒนาโดยทีมพัฒนาโรงพยาบาล
 
 ---
 
