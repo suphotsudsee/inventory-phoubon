@@ -11,8 +11,8 @@ services:
       MYSQL_PASSWORD: phoubon_app_pass
     volumes:
       - mysql_data:/var/lib/mysql
-      - ./backend/database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
-      - ./backend/database/init-users.sql:/docker-entrypoint-initdb.d/02-init-users.sql
+#      - ./backend/database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+#      - ./backend/database/init-users.sql:/docker-entrypoint-initdb.d/02-init-users.sql
     ports:
       - "3308:3306"
     networks:
