@@ -187,6 +187,18 @@ export interface User {
   createdAt: string;
 }
 
+export interface Table10Item {
+  id: string;
+  gpuid: string;
+  drugName: string;
+  dispUnit: string;
+  groupName: string;
+  servicePlan: string;
+  wachtList: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export interface PaginatedResponse<T> {
   items: T[];
   pagination: {
@@ -315,6 +327,26 @@ export const usersApi = {
     api.put<User>(`/users/${id}`, data),
   deleteUser: (id: string) => 
     api.delete<{ success: boolean }>(`/users/${id}`),
+};
+
+// ========== Table 10 API ==========
+
+export const table10Api = {
+  getItems: (params?: { search?: string; group?: string }) =>
+    api.get<Table10Item[]>('/table10-items', { params }),
+  getGroups: () =>
+    api.get<string[]>('/table10-items/groups'),
+  importFile: (data: { fileName: string; fileContentBase64: string }) =>
+    api.post<{ success: boolean; imported: number; inserted: number; updated: number; skipped: number; total: number }>(
+      '/table10-items/import',
+      data
+    ),
+  createItem: (data: Omit<Table10Item, 'id' | 'createdAt' | 'updatedAt'>) =>
+    api.post<{ success: boolean; item: Table10Item }>('/table10-items', data),
+  updateItem: (id: string, data: Omit<Table10Item, 'id' | 'createdAt' | 'updatedAt'>) =>
+    api.put<{ success: boolean; item: Table10Item }>(`/table10-items/${id}`, data),
+  deleteItem: (id: string) =>
+    api.delete<{ success: boolean }>(`/table10-items/${id}`),
 };
 
 // ========== Reports API ==========

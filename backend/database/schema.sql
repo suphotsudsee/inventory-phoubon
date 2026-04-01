@@ -395,3 +395,20 @@ DELIMITER ;
 CREATE INDEX idx_product_category_active ON products(category_id, is_active);
 CREATE INDEX idx_stock_lot_product_expiry ON stock_lots(product_id, expiry_date);
 CREATE INDEX idx_po_status_date ON purchase_orders(status, order_date);
+
+CREATE TABLE IF NOT EXISTS table10_items (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  gpuid VARCHAR(50) NOT NULL,
+  drug_name VARCHAR(255) NOT NULL,
+  disp_unit VARCHAR(50) NULL,
+  drug_group VARCHAR(255) NULL,
+  service_plan VARCHAR(255) NULL,
+  wacht_list VARCHAR(100) NULL,
+  is_active TINYINT(1) DEFAULT 1,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  UNIQUE KEY uq_table10_items_gpuid (gpuid),
+  INDEX idx_table10_items_name (drug_name),
+  INDEX idx_table10_items_group (drug_group),
+  INDEX idx_table10_items_active (is_active)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
